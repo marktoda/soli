@@ -21,7 +21,9 @@ fn list(opt: &Opt) -> Result<()> {
 }
 
 async fn list_remote() -> Result<()> {
-    println!("{:?}", get_remote_versions().await);
+    for version in get_remote_versions().await? {
+        println!("{}", version.as_str());
+    }
     Ok(())
 }
 
@@ -32,11 +34,14 @@ async fn install(opt: &Opt, version: &str) -> Result<()> {
     if install_res.is_err() {
         eprintln!("{:?}", install_res.unwrap_err());
     }
+
+    println!("Version {} installed.", version);
     Ok(())
 }
 
 fn uninstall(opt: &Opt, version: &str) -> Result<()> {
     uninstall_version(&opt.get_dir(), version)?;
+    println!("Version {} uninstalled.", version);
     Ok(())
 }
 
