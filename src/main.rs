@@ -71,9 +71,12 @@ async fn main() -> Result<(), anyhow::Error> {
         Command::Uninstall { ref version } => {
             uninstall(&opt, version.clone().as_str())?;
         }
-
         Command::Use { ref version } => {
             use_new_version(&opt, version.clone().as_str())?;
+        },
+        Command::GetConfig => {
+            println!("Dir: {:?}", &opt.get_dir());
+            println!("Exe Dir: {:?}", &opt.get_exe_dir());
         }
     }
 

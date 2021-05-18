@@ -1,8 +1,11 @@
 use std::path::PathBuf;
 use structopt::StructOpt;
+use directories::ProjectDirs;
 
 #[derive(Clone, Debug, StructOpt)]
 pub enum Command {
+    #[structopt()]
+    GetConfig,
     #[structopt(alias = "ls")]
     List,
     #[structopt(alias = "lsr")]
@@ -10,19 +13,16 @@ pub enum Command {
 
     #[structopt(alias = "i")]
     Install {
-        // #[structopt(short = "v", long = "version")]
         version: String,
     },
 
     #[structopt(alias = "un")]
     Uninstall {
-        // #[structopt(short = "v", long = "version")]
         version: String,
     },
 
     #[structopt(alias = "u")]
     Use {
-        // #[structopt(short = "v", long = "version")]
         version: String,
     },
 }
@@ -34,9 +34,8 @@ pub struct Opt {
         parse(from_os_str),
         short = "d",
         long = "dir",
-        default_value = r"~/.soli/"
     )]
-    pub dir: PathBuf,
+    pub dir: Option<PathBuf>,
 
     #[structopt(
         parse(from_os_str),
@@ -52,7 +51,9 @@ pub struct Opt {
 
 impl Opt {
     pub fn get_dir(&self) -> PathBuf {
-        PathBuf::from(shellexpand::tilde(self.dir.to_str().unwrap()).into_owned())
+        self.dir.as_ref().map_or(
+            ProjectDirs::from("com", "Soli", "soli").expect("Invalid project dirs").data_dir().to_path_buf(),
+            |dir| PathBuf::from(shellexpand::tilde(dir.to_str().unwrap()).into_owned()))
     }
 
     pub fn get_exe_dir(&self) -> PathBuf {
