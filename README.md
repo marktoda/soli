@@ -5,7 +5,7 @@ Solidity version manager written in Rust.
 <a href="https://github.com/marktoda/soli/stargazers"><img src="https://img.shields.io/github/stars/marktoda/soli" alt="Stars Badge"/></a>
 <a href="https://github.com/marktoda/soli/pulls"><img src="https://img.shields.io/github/issues-pr/marktoda/soli" alt="Pull Requests Badge"/></a>
 <a href="https://github.com/marktoda/soli/issues"><img src="https://img.shields.io/github/issues/marktoda/soli" alt="Issues Badge"/></a>
-<a href="https://github.com/marktoda/soli/blob/master/LICENSE"><img src="https://img.shields.io/github/license/marktoda/soli" alt="License Badge"/></a>
+<a href="https://github.com/marktoda/soli/blob/main/LICENSE"><img src="https://img.shields.io/github/license/marktoda/soli" alt="License Badge"/></a>
 
 ## Installation
 
