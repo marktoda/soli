@@ -5,7 +5,10 @@ mod opts;
 use opts::{Command, Opt};
 
 mod versions;
-use versions::{get_current_version, get_local_versions, get_remote_versions, install_version, uninstall_version, use_version};
+use versions::{
+    get_current_version, get_local_versions, get_remote_versions, install_version,
+    uninstall_version, use_version,
+};
 
 fn list(opt: &Opt) -> Result<()> {
     let current_version = get_current_version(&opt.get_exe_dir())?;
@@ -58,10 +61,10 @@ async fn main() -> Result<(), anyhow::Error> {
     match opt.cmd {
         Command::List => {
             list(&opt)?;
-        },
+        }
         Command::ListRemote => {
             list_remote().await?;
-        },
+        }
         Command::Install { ref version } => {
             install(&opt, version.clone().as_str()).await?;
         }

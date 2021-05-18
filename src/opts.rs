@@ -24,16 +24,26 @@ pub enum Command {
     Use {
         // #[structopt(short = "v", long = "version")]
         version: String,
-    }
+    },
 }
 
 #[derive(Clone, Debug, StructOpt)]
 #[structopt(name = "Soli", about = "Options for the Soli CLI utility")]
 pub struct Opt {
-    #[structopt(parse(from_os_str), short = "d", long = "dir", default_value = r"~/.soli/")]
+    #[structopt(
+        parse(from_os_str),
+        short = "d",
+        long = "dir",
+        default_value = r"~/.soli/"
+    )]
     pub dir: PathBuf,
 
-    #[structopt(parse(from_os_str), short = "e", long = "exe_dir", default_value = r"~/.local/bin/")]
+    #[structopt(
+        parse(from_os_str),
+        short = "e",
+        long = "exe_dir",
+        default_value = r"~/.local/bin/"
+    )]
     pub executable_dir: PathBuf,
 
     #[structopt(subcommand)]
