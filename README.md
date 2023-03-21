@@ -21,15 +21,15 @@ Solidity version manager written in Rust.
 ```sh
 $ git clone https://github.com/marktoda/soli
 $ cd soli
-$ cargo build --release
+$ cargo install --path .
 ```
 
-This produces an executable in the `./target/release/` subdirectory.
+This produces an executable `soli`
 
 
 ## Usage
 
-Usage looks very similar to that of `nvm` for node.js. 
+Usage looks very similar to that of `nvm` for node.js.
 
 ### Install a Solidity version
 ```sh
